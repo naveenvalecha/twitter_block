@@ -120,7 +120,7 @@ class TwitterBlock extends BlockBase {
     $form['size'] = [
       '#type' => 'fieldset',
       '#title' => $this->t('Size'),
-      '#description' => $this->tt('Embedded timelines are flexible and adaptive,
+      '#description' => $this->t('Embedded timelines are flexible and adaptive,
         functioning at a variety of dimensions ranging from wide to narrow,
         and short to tall. The default dimensions for a timeline are 520×600px,
         which can be overridden to fit the dimension requirements of your page.
