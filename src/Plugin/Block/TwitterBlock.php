@@ -27,7 +27,7 @@ class TwitterBlock extends BlockBase {
    */
   public function blockForm($form, FormStateInterface $form_state) {
 
-    $config = $this->configuration;
+    $config = $this->getConfiguration();
 
     $form['widget_id'] = [
       '#type' => 'textfield',
@@ -187,11 +187,11 @@ class TwitterBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function blockSubmit($form, FormStateInterface $form_state) {
-    $this->configuration['widget_id'] = $form_state->getValue('widget_id');
+    $this->setConfigurationValue('widget_id', $form_state->getValue('widget_id'));
     foreach (['appearance', 'functionality', 'size', 'accessibility'] as $fieldset) {
       $fieldset_values = $form_state->getValue($fieldset);
       foreach ($fieldset_values as $key => $value) {
-        $this->configuration[$key] = $value;
+        $this->setConfigurationValue($key, $value);
       }
     }
   }
@@ -201,7 +201,7 @@ class TwitterBlock extends BlockBase {
    */
   public function build() {
 
-    $config = $this->configuration;
+    $config = $this->getConfiguration();
 
     $render = [
       '#type' => 'link',
