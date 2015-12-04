@@ -15,9 +15,9 @@ use Drupal\Core\Url;
  * Defines a twitter block block type.
  *
  * @Block(
- *  id = "twitter_block",
- *  admin_label = @Translation("Twitter block"),
- *  category = @Translation("Twitter"),
+ *   id = "twitter_block",
+ *   admin_label = @Translation("Twitter block"),
+ *   category = @Translation("Twitter"),
  * )
  */
 class TwitterBlock extends BlockBase {
@@ -233,13 +233,7 @@ class TwitterBlock extends BlockBase {
     }
 
     if (!empty($config['chrome'])) {
-      $options = array();
-
-      foreach ($config['chrome'] as $option => $status) {
-        if ($status) {
-          $options[] = $option;
-        }
-      }
+      $options = array_keys(array_filter($config['chrome']));
 
       if (count($options)) {
         $render['#attributes']['data-chrome'] = implode(' ', $options);
